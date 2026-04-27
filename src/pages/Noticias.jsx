@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { NewsCardTriptych, StoryCard } from '../components';
 import Footer from '../components/Footer.jsx';
 import './Noticias.css';
 
@@ -44,116 +45,111 @@ export default function Noticias() {
         </div>
 
         <div className="section-label">Destaque — notícia principal</div>
-        <div className="card-destaque">
-          <div className="card-destaque-img">
-            <img src="/images/cidadania-01.jpg" alt="Dia de Cidadania e Solidariedade na Rodoviária do Plano Piloto" />
-          </div>
-          <div className="card-destaque-body">
-            <span className="card-cat cat-acoes">Ações em campo</span>
-            <div className="card-title">Dia de Cidadania e Solidariedade na Rodoviária do Plano Piloto: DPDF e Brasil Te Ama em Ação</div>
-            <div className="card-resumo">No dia 21 de maio de 2025, a Rodoviária do Plano Piloto foi palco da Quarta do Cidadão, promovida pela Defensoria Pública do DF em parceria com o Instituto Brasil Te Ama — levando serviços de cidadania, justiça e cuidado diretamente à população.</div>
-            <div className="card-meta">
-              <span>21 mai 2025</span>
-              <span className="card-fonte">Ações em campo</span>
-              <span className="card-origem">aproveitado do site atual</span>
-            </div>
-            <a href="https://institutobrasilteama.org/2025/05/22/dia-de-cidadania-e-solidariedade-na-rodoviaria-do-plano-piloto-dpdf-e-brasil-te-ama-em-acao/" target="_blank" rel="noopener noreferrer" className="card-link" style={{ textDecoration: 'none' }}>Ler mais →</a>
-          </div>
-        </div>
+        <NewsCardTriptych
+          variant="landscape-pair"
+          size="featured"
+          kicker="DESTAQUE / AÇÕES EM CAMPO"
+          date="21 mai 2025"
+          headline="Dia de Cidadania e Solidariedade na Rodoviária do Plano Piloto"
+          lead="A Rodoviária do Plano Piloto foi palco da Quarta do Cidadão, com serviços de cidadania, justiça e cuidado em parceria com a Defensoria Pública do DF."
+          href="https://institutobrasilteama.org/2025/05/22/dia-de-cidadania-e-solidariedade-na-rodoviaria-do-plano-piloto-dpdf-e-brasil-te-ama-em-acao/"
+          images={[
+            { src: '/images/cidadania-01.jpg', alt: 'Dia de Cidadania e Solidariedade na Rodoviária do Plano Piloto' },
+            { src: '/images/cidadania-02.jpg', alt: 'Cerimônia de boas-vindas aos participantes' },
+            { src: '/images/cidadania-03.jpg', alt: 'Beneficiários recebendo atendimentos' }
+          ]}
+        />
       </div>
 
       <div className="section">
         <div className="section-label">Notícias recentes — todos os posts do site atual (2025)</div>
         <div className="cards-grid">
+          {/* Row 1: Triptych (hero-stack) + Triptych (mosaic) */}
+          <NewsCardTriptych
+            variant="hero-stack"
+            kicker="EVENTOS"
+            date="27 mai 2025"
+            headline="Lançamento do Instituto Brasil Te Ama reúne convidados especiais"
+            lead="Jantar memorável reunindo fundadores, lideranças e parceiros em celebração do novo instituto."
+            href="https://institutobrasilteama.org/2025/05/27/lancamento-do-instituto-brasil-te-ama-reune-convidados-especiais-em-noite-memoravel/"
+            images={[
+              { src: '/images/lancamento-01.jpg', alt: 'Lançamento do Instituto Brasil Te Ama' },
+              { src: '/images/nicoletti-vertical.jpg', alt: 'Franco Nicoletti na cerimônia' },
+              { src: '/images/nicoletti-horizontal.jpg', alt: 'Momento de celebração com convidados' }
+            ]}
+          />
+          <NewsCardTriptych
+            variant="mosaic"
+            kicker="PARCERIAS"
+            date="5 mai 2025"
+            headline="23ª Edição do Dia da Mulher — parceria com Defensoria Pública do DF"
+            lead="Evento transformador oferecendo mais de 1.000 serviços à população feminina."
+            href="https://institutobrasilteama.org/2025/05/05/elementor-421/"
+            images={[
+              { src: '/images/nicoletti-vertical.jpg', alt: 'Mulheres em atendimento' },
+              { src: '/images/maes-01.jpg', alt: 'Momento de cuidado em ação' },
+              { src: '/images/cidadania-04.jpg', alt: 'Participantes do evento' }
+            ]}
+          />
 
-          <div className="card">
-            <div className="card-img"><img src="/images/lancamento-01.jpg" alt="Lançamento do Instituto Brasil Te Ama" /></div>
-            <div className="card-body">
-              <span className="card-cat cat-eventos">Eventos</span>
-              <div className="card-title">Lançamento do Instituto Brasil Te Ama reúne convidados especiais</div>
-              <div className="card-resumo">Jantar de lançamento realizado na residência de Franco Nicoletti e Shirin Vafaein — noite de elegância, diálogo e engajamento social.</div>
-              <div className="card-meta"><span>27 mai 2025</span><span className="card-origem">aproveitado</span></div>
-              <a href="https://institutobrasilteama.org/2025/05/27/lancamento-do-instituto-brasil-te-ama-reune-convidados-especiais-em-noite-memoravel/" target="_blank" rel="noopener noreferrer" className="card-link" style={{ textDecoration: 'none' }}>Ler mais →</a>
-            </div>
-          </div>
+          {/* Row 2: Story cards */}
+          <StoryCard
+            kicker="AÇÕES EM CAMPO"
+            date="11 mai 2025"
+            headline="Ação Social em Arrozal — cidadania e cuidado à comunidade"
+            lead="Parceria com DETRAN, DPDF e GDF levando serviços essenciais."
+            href="https://institutobrasilteama.org/2025/05/11/acao-humanitaria-em-arrozal-df/"
+            image={{ src: '/images/nigeria.jpg', alt: 'Ação Social em Arrozal' }}
+          />
+          <StoryCard
+            kicker="IMPRENSA"
+            date="11 abr 2025"
+            headline="Instituto Brasil Te Ama na Rádio Sucesso — lançamento oficial"
+            lead="Primeira aparição pública em entrevista ao vivo no programa É Só Subindo."
+            href="https://institutobrasilteama.org/2025/04/11/instituto-brasil-te-ama-na-radio-sucesso/"
+            image={{ src: '/images/institucional-widescreen.jpg', alt: 'Entrevista Rádio Sucesso' }}
+          />
 
-          <div className="card">
-            <div className="card-img">foto da ação<br/><span className="annotation ready" style={{ fontSize: '9px' }}>foto no site atual</span></div>
-            <div className="card-body">
-              <span className="card-cat cat-parcerias">Parcerias</span>
-              <div className="card-title">23ª Edição do Dia da Mulher — parceria com Defensoria Pública do DF</div>
-              <div className="card-resumo">Evento grandioso e transformador em parceria com a DPDF — mais de 1.000 serviços oferecidos à população feminina do DF.</div>
-              <div className="card-meta"><span>5 mai 2025</span><span className="card-origem">aproveitado</span></div>
-              <a href="https://institutobrasilteama.org/2025/05/05/elementor-421/" target="_blank" rel="noopener noreferrer" className="card-link" style={{ textDecoration: 'none' }}>Ler mais →</a>
-            </div>
-          </div>
+          {/* Row 3: Triptych (diagonal) + Story cards */}
+          <NewsCardTriptych
+            variant="diagonal"
+            kicker="EVENTOS"
+            date="15 jul 2025"
+            headline="Encontro Inspirador com o Atleta Edilson"
+            lead="Atleta de 75 anos compartilha seus êxitos em competições de corrida."
+            href="https://institutobrasilteama.org/2025/07/15/encontro-inspirador-com-o-atleta-edilson/"
+            images={[
+              { src: '/images/edilson-01.jpg', alt: 'Atleta Edilson em pose vitoriosa' },
+              { src: '/images/nicoletti-horizontal.jpg', alt: 'Momento de conversa com equipe' },
+              { src: '/images/edilson-02.jpg', alt: 'Medalhas e conquistas apresentadas' }
+            ]}
+          />
+          <StoryCard
+            kicker="EVENTOS"
+            date="27 jul 2025"
+            headline="21ª Edição do World Police & Fire Games"
+            lead="Participação institucional do Instituto em evento internacional."
+            href="https://institutobrasilteama.org/2025/07/27/21a-edicao-do-world-police-fire/"
+            image={{ src: '/images/wpfg-01.jpg', alt: 'World Police & Fire Games' }}
+          />
 
-          <div className="card">
-            <div className="card-img">foto da ação<br/><span className="annotation ready" style={{ fontSize: '9px' }}>foto no site atual</span></div>
-            <div className="card-body">
-              <span className="card-cat cat-acoes">Ações em campo</span>
-              <div className="card-title">Ação Social em Arrozal — cidadania e cuidado à comunidade do Córrego</div>
-              <div className="card-resumo">10 de maio de 2025 — parceria com DETRAN, DPDF, CAESB, GDF, Instituto Verônica Rodrigues e Secretaria de Desenvolvimento Social.</div>
-              <div className="card-meta"><span>11 mai 2025</span><span className="card-origem">aproveitado</span></div>
-              <a href="https://institutobrasilteama.org/2025/05/11/acao-humanitaria-em-arrozal-df/" target="_blank" rel="noopener noreferrer" className="card-link" style={{ textDecoration: 'none' }}>Ler mais →</a>
-            </div>
-          </div>
-
-          <div className="card">
-            <div className="card-img">foto da entrevista<br/><span className="annotation ready" style={{ fontSize: '9px' }}>foto no site atual</span></div>
-            <div className="card-body">
-              <span className="card-cat cat-imprensa">Imprensa</span>
-              <div className="card-title">Instituto Brasil Te Ama na Rádio Sucesso — lançamento oficial</div>
-              <div className="card-resumo">11 de abril de 2025 — lançamento do Instituto no programa É Só Subindo, da Rádio Sucesso — primeira aparição pública na mídia.</div>
-              <div className="card-meta"><span>11 abr 2025</span><span className="card-origem">aproveitado</span></div>
-              <a href="https://institutobrasilteama.org/2025/04/11/instituto-brasil-te-ama-na-radio-sucesso/" target="_blank" rel="noopener noreferrer" className="card-link" style={{ textDecoration: 'none' }}>Ler mais →</a>
-            </div>
-          </div>
-
-          <div className="card">
-            <div className="card-img"><img src="/images/edilson-01.jpg" alt="Encontro Inspirador com o Atleta Edilson" /></div>
-            <div className="card-body">
-              <span className="card-cat cat-eventos">Eventos</span>
-              <div className="card-title">Encontro Inspirador com o Atleta Edilson</div>
-              <div className="card-resumo">Atleta amador de 75 anos compartilha conquistas em competições de corrida — medalhas e vitórias em Goiás apresentadas à equipe do Instituto.</div>
-              <div className="card-meta"><span>15 jul 2025</span><span className="card-origem">aproveitado</span></div>
-              <a href="https://institutobrasilteama.org/2025/07/15/encontro-inspirador-com-o-atleta-edilson/" target="_blank" rel="noopener noreferrer" className="card-link" style={{ textDecoration: 'none' }}>Ler mais →</a>
-            </div>
-          </div>
-
-          <div className="card">
-            <div className="card-img"><img src="/images/wpfg-01.jpg" alt="21ª Edição do World Police & Fire Games" /></div>
-            <div className="card-body">
-              <span className="card-cat cat-eventos">Eventos</span>
-              <div className="card-title">21ª Edição do World Police & Fire Games</div>
-              <div className="card-resumo">Participação institucional do Instituto Brasil Te Ama na 21ª edição do evento internacional.</div>
-              <div className="card-meta"><span>27 jul 2025</span><span className="card-origem">aproveitado</span></div>
-              <a href="https://institutobrasilteama.org/2025/07/27/21a-edicao-do-world-police-fire/" target="_blank" rel="noopener noreferrer" className="card-link" style={{ textDecoration: 'none' }}>Ler mais →</a>
-            </div>
-          </div>
-
-          <div className="card">
-            <div className="card-img"><img src="/images/maes-01.jpg" alt="Homenagem ao Dia das Mães — Instituto Brasil Te Ama" /></div>
-            <div className="card-body">
-              <span className="card-cat cat-acoes">Ações em campo</span>
-              <div className="card-title">Homenagem ao Dia das Mães — Instituto Brasil Te Ama</div>
-              <div className="card-resumo">Celebração do Dia das Mães com mensagem institucional de reconhecimento e cuidado.</div>
-              <div className="card-meta"><span>11 mai 2025</span><span className="card-origem">aproveitado</span></div>
-              <a href="https://institutobrasilteama.org/2025/05/11/homenagem-ao-dia-das-maes-instituto-brasil-te-ama/" target="_blank" rel="noopener noreferrer" className="card-link" style={{ textDecoration: 'none' }}>Ler mais →</a>
-            </div>
-          </div>
-
-          <div className="card">
-            <div className="card-img"><img src="/images/edilson-02.jpg" alt="Atleta amador de 75 anos em competições de corrida em Goiás" /></div>
-            <div className="card-body">
-              <span className="card-cat cat-acoes">Ações em campo</span>
-              <div className="card-title">Atleta amador de 75 anos brilha em competições de corrida em Goiás</div>
-              <div className="card-resumo">Edilson da Costa Dias conquista 1º lugar no Circuito Anapolino — história de superação apoiada pelo Instituto.</div>
-              <div className="card-meta"><span>1 abr 2025</span><span className="card-origem">aproveitado</span></div>
-              <a href="https://institutobrasilteama.org/2025/04/01/atleta-amador-de-75-anos-brilha-em-competicoes-de-corrida-e-conquista-duas-vitorias-em-goias/" target="_blank" rel="noopener noreferrer" className="card-link" style={{ textDecoration: 'none' }}>Ler mais →</a>
-            </div>
-          </div>
-
+          {/* Row 4: Story cards */}
+          <StoryCard
+            kicker="AÇÕES EM CAMPO"
+            date="11 mai 2025"
+            headline="Homenagem ao Dia das Mães — Instituto Brasil Te Ama"
+            lead="Celebração de reconhecimento e cuidado com as mães do nosso Brasil."
+            href="https://institutobrasilteama.org/2025/05/11/homenagem-ao-dia-das-maes-instituto-brasil-te-ama/"
+            image={{ src: '/images/maes-01.jpg', alt: 'Homenagem ao Dia das Mães' }}
+          />
+          <StoryCard
+            kicker="AÇÕES EM CAMPO"
+            date="1 abr 2025"
+            headline="Atleta amador de 75 anos brilha em competições em Goiás"
+            lead="Edilson da Costa Dias conquista 1º lugar — história de superação apoiada."
+            href="https://institutobrasilteama.org/2025/04/01/atleta-amador-de-75-anos-brilha-em-competicoes-de-corrida-e-conquista-duas-vitorias-em-goias/"
+            image={{ src: '/images/edilson-02.jpg', alt: 'Atleta Edilson em competição' }}
+          />
         </div>
       </div>
 

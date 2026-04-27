@@ -1,0 +1,311 @@
+.triptych {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  transition: none;
+  outline: none;
+}
+
+.triptych:focus-visible {
+  outline: 3px solid var(--color-terracota);
+  outline-offset: 2px;
+}
+
+.triptych__images {
+  display: grid;
+  gap: var(--triptych-gap);
+  margin-bottom: var(--triptych-meta-y);
+  overflow: hidden;
+  border-radius: var(--triptych-radius);
+  background: var(--color-sand);
+}
+
+.triptych__img-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--triptych-radius);
+}
+
+.triptych__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  background-color: var(--color-sand);
+  transition: transform 600ms ease;
+}
+
+.triptych__img--lead {
+  object-position: var(--img-focal-position, center);
+}
+
+/* Hover effect on lead image */
+.triptych:hover .triptych__img--lead {
+  transform: scale(1.02);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .triptych__img {
+    transition: none;
+  }
+}
+
+/* === VARIANT: hero-stack === */
+/* Img A (60%, portrait 4:5) spans 2 rows on left; B & C (40%, 1:1) stacked on right */
+
+.triptych--hero-stack .triptych__images {
+  grid-template-columns: 3fr 2fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.triptych--hero-stack .triptych__img-wrapper:nth-child(1) {
+  grid-row: 1 / 3;
+}
+
+.triptych--hero-stack .triptych__img-wrapper:nth-child(2) {
+  grid-row: 1;
+  grid-column: 2;
+}
+
+.triptych--hero-stack .triptych__img-wrapper:nth-child(3) {
+  grid-row: 2;
+  grid-column: 2;
+}
+
+/* === VARIANT: landscape-pair === */
+/* Img A (16:9) spans full width top; B & C (1:1) side-by-side below */
+
+.triptych--landscape-pair .triptych__images {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+}
+
+.triptych--landscape-pair .triptych__img-wrapper:nth-child(1) {
+  grid-column: 1 / -1;
+}
+
+.triptych--landscape-pair .triptych__img-wrapper:nth-child(2) {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.triptych--landscape-pair .triptych__img-wrapper:nth-child(3) {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+/* === VARIANT: diagonal === */
+/* Absolute positioned staggered diagonal arrangement */
+
+.triptych--diagonal .triptych__images {
+  position: relative;
+  height: 320px;
+  grid: none;
+  gap: 0;
+}
+
+.triptych--diagonal .triptych__img-wrapper {
+  position: absolute;
+  width: 65%;
+  height: 280px;
+  z-index: 1;
+}
+
+.triptych--diagonal .triptych__img-wrapper--lead {
+  left: 0;
+  top: 0;
+  z-index: 3;
+}
+
+.triptych--diagonal .triptych__img-wrapper--secondary-1 {
+  left: calc(65% - 8px);
+  top: 60px;
+  z-index: 2;
+}
+
+.triptych--diagonal .triptych__img-wrapper--secondary-2 {
+  left: calc(65% * 2 - 16px);
+  top: 120px;
+  z-index: 1;
+}
+
+/* === VARIANT: mosaic === */
+/* Img A (4:5 left), B (1:1 top-right), C (16:9 full bottom) */
+
+.triptych--mosaic .triptych__images {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+}
+
+.triptych--mosaic .triptych__img-wrapper:nth-child(1) {
+  grid-row: 1 / 3;
+  grid-column: 1;
+}
+
+.triptych--mosaic .triptych__img-wrapper:nth-child(2) {
+  grid-row: 1;
+  grid-column: 2;
+}
+
+.triptych--mosaic .triptych__img-wrapper:nth-child(3) {
+  grid-row: 2;
+  grid-column: 1 / -1;
+}
+
+/* === FEATURED SIZE === */
+
+.triptych--featured {
+  --triptych-gap: 12px;
+  --triptych-headline-size: var(--fs-h2);
+}
+
+.triptych--featured .triptych__headline {
+  font-size: var(--fs-h2);
+  line-height: var(--lh-h2);
+}
+
+/* === CONTENT SECTION === */
+
+.triptych__content {
+  padding: 0;
+}
+
+.triptych__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--triptych-headline-mt);
+  font-size: var(--fs-meta);
+  line-height: var(--lh-meta);
+}
+
+.triptych__dot {
+  color: var(--color-text-muted);
+}
+
+.triptych__headline {
+  margin-bottom: var(--space-2);
+  line-height: var(--lh-h3);
+}
+
+@media (min-width: 1024px) {
+  .triptych__headline {
+    font-size: var(--fs-h2);
+    line-height: var(--lh-h2);
+  }
+}
+
+.triptych__lead {
+  margin-bottom: var(--triptych-cta-mt);
+}
+
+.triptych__cta {
+  display: inline-block;
+  margin-top: var(--space-1);
+}
+
+/* === RESPONSIVE === */
+
+/* Mobile (< 640px) — all variants degrade to landscape-pair style */
+@media (max-width: 639px) {
+  .triptych--hero-stack .triptych__images,
+  .triptych--diagonal .triptych__images,
+  .triptych--mosaic .triptych__images {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    height: auto;
+  }
+
+  .triptych--hero-stack .triptych__img-wrapper:nth-child(1),
+  .triptych--diagonal .triptych__img-wrapper--lead,
+  .triptych--mosaic .triptych__img-wrapper:nth-child(1) {
+    grid-row: 1;
+    grid-column: 1 / -1;
+    position: relative;
+    width: 100%;
+    height: auto;
+    left: 0 !important;
+    top: 0 !important;
+    z-index: 1 !important;
+  }
+
+  .triptych--hero-stack .triptych__img-wrapper:nth-child(2),
+  .triptych--diagonal .triptych__img-wrapper--secondary-1,
+  .triptych--mosaic .triptych__img-wrapper:nth-child(2) {
+    grid-row: 2;
+    grid-column: 1;
+    position: relative;
+    width: 100%;
+    height: auto;
+    left: 0 !important;
+    top: 0 !important;
+    z-index: 1 !important;
+  }
+
+  .triptych--hero-stack .triptych__img-wrapper:nth-child(3),
+  .triptych--diagonal .triptych__img-wrapper--secondary-2 {
+    grid-row: 2;
+    grid-column: 2;
+    position: relative;
+    width: 100%;
+    height: auto;
+    left: 0 !important;
+    top: 0 !important;
+    z-index: 1 !important;
+  }
+
+  .triptych--mosaic .triptych__img-wrapper:nth-child(3) {
+    grid-row: 3;
+    grid-column: 1 / -1;
+    position: relative;
+    width: 100%;
+    height: auto;
+    left: 0 !important;
+    top: 0 !important;
+    z-index: 1 !important;
+  }
+}
+
+/* Tablet (640px - 1023px) — scale variants but keep structure */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .triptych--diagonal .triptych__images {
+    height: 280px;
+  }
+
+  .triptych--diagonal .triptych__img-wrapper {
+    height: 240px;
+  }
+
+  .triptych--diagonal .triptych__img-wrapper--secondary-1 {
+    top: 50px;
+  }
+
+  .triptych--diagonal .triptych__img-wrapper--secondary-2 {
+    top: 100px;
+  }
+
+  .triptych--mosaic .triptych__img-wrapper:nth-child(3) {
+    height: 240px;
+  }
+}
+
+/* Desktop (1024px+) — full variants */
+@media (min-width: 1024px) {
+  .triptych--diagonal .triptych__images {
+    height: 360px;
+  }
+
+  .triptych--diagonal .triptych__img-wrapper {
+    height: 320px;
+  }
+
+  .triptych--diagonal .triptych__img-wrapper--secondary-1 {
+    top: 70px;
+  }
+
+  .triptych--diagonal .triptych__img-wrapper--secondary-2 {
+    top: 140px;
+  }
+}

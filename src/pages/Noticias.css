@@ -45,15 +45,19 @@
 .page-noticias .card-fonte { font-size:10px; padding:2px 8px; border-radius:3px; background:var(--color-background-secondary); border:0.5px solid var(--color-border-tertiary); }
 .page-noticias .card-origem { font-size:9px; color:var(--gray-mid); font-style:italic; }
 
-/* Grid de cards */
-.page-noticias .cards-grid { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:14px; }
-.page-noticias .card { background:var(--color-background-primary); border:0.5px solid var(--color-border-tertiary); border-radius:var(--border-radius-lg); overflow:hidden; }
-.page-noticias .card-img { height:72px; background:var(--gray-light); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px; font-size:10px; color:var(--gray-mid); text-align:center; padding:8px; border-bottom:0.5px solid var(--color-border-tertiary); }
-.page-noticias .card-body { padding:12px 14px; }
-.page-noticias .card-body .card-title { font-size:13px; margin-bottom:6px; }
-.page-noticias .card-body .card-resumo { font-size:11px; margin-bottom:8px; }
-.page-noticias .card-body .card-meta { font-size:10px; }
-.page-noticias .card-link { font-size:11px; color:var(--bordo); margin-top:8px; display:block; }
+/* Grid de cards — novo design system com triptychs e story cards */
+.page-noticias .cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-6);
+}
+
+@media (max-width: 768px) {
+  .page-noticias .cards-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+}
 
 /* Seção imprensa */
 .page-noticias .imprensa-grid { display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:10px; }

@@ -1,45 +1,202 @@
-/* Shared brand tokens + design system variables used by all wireframes. */
+/* Brasil Te Ama v2 — Redesign Design System Tokens */
 :root {
-  --bordo: #7B1C3E;
-  --bordo-light: #f5eaee;
-  --bordo-dark: #5a1230;
-  --gold: #C9A84C;
-  --gray-text: #3d3b38;
-  --gray-mid: #6b6966;
-  --gray-light: #f5f4f1;
-  --white: #ffffff;
+  /* === COLOR PALETTE — "Cerrado em Flor" === */
 
-  /* Design system tokens referenced by the wireframes. */
-  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
-  --color-border-tertiary: #e5e3df;
-  --color-text-primary: #2c2a26;
-  --color-text-secondary: #6b6966;
-  --color-background-primary: #ffffff;
-  --color-background-secondary: #f9f8f5;
-  --border-radius-md: 6px;
-  --border-radius-lg: 10px;
+  /* Primários institucionais */
+  --color-ink: #0E2A1E;
+  --color-ink-soft: #1F3D2E;
+
+  /* Neutros quentes */
+  --color-cream: #F5EFE3;
+  --color-sand: #E8DDC9;
+  --color-paper: #FFFFFF;
+
+  /* Acentos */
+  --color-terracota: #C5552D;
+  --color-teal: #2E8C8A;
+  --color-amber: #E8A33D;
+
+  /* Texto */
+  --color-text: #0F1714;
+  --color-text-muted: #5A6660;
+  --color-text-inverse: #F5EFE3;
+
+  /* Estados */
+  --color-link: var(--color-teal);
+  --color-link-hover: var(--color-ink);
+  --color-success: #2E8C5A;
+  --color-error: #C5552D;
+
+  /* Overlays */
+  --overlay-dark: rgba(14, 42, 30, 0.55);
+  --overlay-dark-strong: rgba(14, 42, 30, 0.78);
+
+  /* === TYPOGRAPHY === */
+
+  /* Famílias */
+  --font-display: 'Fraunces', 'Times New Roman', serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Pesos display (Fraunces) */
+  --fw-display-regular: 400;
+  --fw-display-bold: 700;
+  --fw-display-black: 900;
+
+  /* Pesos body (Inter) */
+  --fw-body-regular: 400;
+  --fw-body-medium: 500;
+  --fw-body-semibold: 600;
+  --fw-body-bold: 700;
+
+  /* Type scale — mobile-first */
+  --fs-hero: 44px;
+  --lh-hero: 1.05;
+
+  --fs-h1: 36px;
+  --lh-h1: 1.1;
+
+  --fs-h2: 28px;
+  --lh-h2: 1.15;
+
+  --fs-h3: 22px;
+  --lh-h3: 1.2;
+
+  --fs-h4: 18px;
+  --lh-h4: 1.3;
+
+  --fs-body-lg: 18px;
+  --lh-body-lg: 1.6;
+
+  --fs-body: 16px;
+  --lh-body: 1.65;
+
+  --fs-meta: 13px;
+  --lh-meta: 1.4;
+
+  --fs-micro: 11px;
+  --lh-micro: 1.4;
+
+  /* Desktop overrides (1024px+) */
+  @media (min-width: 1024px) {
+    --fs-hero: 88px;
+    --lh-hero: 1.02;
+    --fs-h1: 60px;
+    --lh-h1: 1.05;
+    --fs-h2: 44px;
+    --lh-h2: 1.1;
+    --fs-h3: 28px;
+    --lh-h3: 1.2;
+    --fs-h4: 20px;
+    --lh-h4: 1.3;
+    --fs-body-lg: 20px;
+    --lh-body-lg: 1.6;
+    --fs-body: 17px;
+    --lh-body: 1.65;
+    --fs-meta: 14px;
+    --lh-meta: 1.4;
+    --fs-micro: 12px;
+    --lh-micro: 1.4;
+  }
+
+  /* === SPACING === */
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+  --space-11: 160px;
+
+  /* Section padding */
+  --section-y-mobile: var(--space-8);
+  --section-y-desktop: var(--space-10);
+
+  /* Container */
+  --container-max: 1280px;
+  --container-px-mobile: var(--space-4);
+  --container-px-desktop: var(--space-6);
+
+  /* === RADIUS === */
+
+  --radius-none: 0;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-pill: 999px;
+
+  /* === SHADOW === */
+
+  --shadow-card: 0 1px 2px rgba(14, 42, 30, 0.06), 0 8px 24px rgba(14, 42, 30, 0.08);
+  --shadow-overlay: 0 24px 64px rgba(14, 42, 30, 0.18);
+
+  /* === TRIPTYCH (NewsCardTriptych) === */
+
+  --triptych-gap: 8px;
+  --triptych-radius: 0;
+  --triptych-overlay: var(--overlay-dark);
+  --triptych-meta-y: var(--space-4);
+  --triptych-headline-mt: var(--space-3);
+  --triptych-cta-mt: var(--space-4);
+
+  @media (min-width: 1024px) {
+    --triptych-gap: 12px;
+    --triptych-headline-size: var(--fs-h2);
+  }
+
+  /* === BREAKPOINTS === */
+
+  --bp-sm: 640px;
+  --bp-md: 1024px;
+  --bp-lg: 1280px;
+  --bp-xl: 1440px;
 }
+
+/* === RESET & DEFAULTS === */
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-html, body { background: var(--color-background-primary); }
-body { font-family: var(--font-sans); color: var(--color-text-primary); }
+html, body {
+  background: var(--color-paper);
+  font-family: var(--font-body);
+  color: var(--color-text);
+}
 
 button { cursor: pointer; font-family: inherit; }
 
+a { color: var(--color-link); text-decoration: none; }
+
+a:hover { color: var(--color-link-hover); }
+
+/* === ACCESSIBILITY === */
+
 .sr-only {
-  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
-  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
-/* Annotation chips used across all wireframes. */
-.annotation {
-  font-size: 10px; color: #185FA5; background: #E6F1FB;
-  border: 0.5px solid #85B7EB; border-radius: 3px;
-  padding: 2px 7px; display: inline-block; margin-top: 4px;
-}
-.annotation.pending { color: #854F0B; background: #FAEEDA; border-color: #EF9F27; }
-.annotation.ready { color: #3B6D11; background: #EAF3DE; border-color: #97C459; }
+/* === FOCUS VISIBLE === */
 
-.logo-img { width: 36px; height: 36px; object-fit: contain; display: block; }
+:focus-visible {
+  outline: 3px solid var(--color-terracota);
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--color-terracota);
+  outline-offset: 2px;
+}
